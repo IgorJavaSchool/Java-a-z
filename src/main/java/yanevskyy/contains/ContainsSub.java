@@ -1,17 +1,20 @@
 package yanevskyy.contains;
 
 /**
+ * Uses for fids substring in a string.
  * Created by MM on 23.05.2016.
  */
 public class ContainsSub {
-
+    /**
+     * Default constructor.
+     */
     public ContainsSub() {
     }
 
     /**
      * Finds transmitted substring in a string.
-     * @param str
-     * @param sub
+     * @param str String for find.
+     * @param sub Substring for find.
      * @return
      */
     boolean contains(String str, String sub) {

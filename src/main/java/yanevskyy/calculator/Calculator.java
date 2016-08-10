@@ -2,13 +2,14 @@ package yanevskyy.calculator;
 
 /**
  * Imitation calculator.
+ * @author Yanevskyy Igor igor2000@inbox.ru.
  */
 public class Calculator {
 
     /**
      * Result actions.
      */
-    double result;
+    private double result;
 
     /**
      * Takes two numbers and adds them.
@@ -49,5 +50,9 @@ public class Calculator {
      */
     void multiply(double first, double second){
         result = first * second;
+    }
+
+    public double getResult() {
+        return result;
     }
 }

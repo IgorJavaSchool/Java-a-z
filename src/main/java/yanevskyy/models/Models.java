@@ -1,20 +1,25 @@
 package yanevskyy.models;
 
 /**
- * Created by MM on 23.05.2016.
+ * Uses for make new model employee.
+ * @author Yanevskyy Igor igor2000@inbox.ru.
  */
 public class Models {
+    /*First Name*/
     String firstName;
+    /*Last Name*/
     String lastName;
+    /*Pay Rate*/
     double payRate;
+    /*Vacation*/
     int yearlyVacation;
 
     /**
      * A class representing a Employee or a Contractor or a Temporary
-     * @param firstName
-     * @param lastName
-     * @param payRate
-     * @param yearlyVacation
+     * @param firstName First Name.
+     * @param lastName Last Name.
+     * @param payRate Pay Rate.
+     * @param yearlyVacation Vacation.
      */
     public Models(String firstName, String lastName, double payRate,
                   int yearlyVacation) {

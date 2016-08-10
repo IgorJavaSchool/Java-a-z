@@ -18,7 +18,7 @@ public class CalculatorTest {
         double checked = 2.0;
 
         calculator.add(firstNumber, secondNumber);
-        result = calculator.result;
+        result = calculator.getResult();
 
         Assert.assertThat(result, is(checked));
     }
@@ -32,7 +32,7 @@ public class CalculatorTest {
         double checked = 1.0;
 
         calculator.subtract(firstNumber, secondNumber);
-        result = calculator.result;
+        result = calculator.getResult();
 
         Assert.assertThat(result, is(checked));
     }
@@ -46,7 +46,7 @@ public class CalculatorTest {
         double checked = 0;
 
         calculator.div(firstNumber, secondNumber);
-        result = calculator.result;
+        result = calculator.getResult();
 
         Assert.assertThat(result, is(checked));
     }
@@ -60,7 +60,7 @@ public class CalculatorTest {
         double checked = 6;
 
         calculator.multiply(firstNumber, secondNumber);
-        result = calculator.result;
+        result = calculator.getResult();
 
         Assert.assertThat(result, is(checked));
     }

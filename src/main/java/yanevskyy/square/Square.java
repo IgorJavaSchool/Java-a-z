@@ -1,8 +1,8 @@
 package yanevskyy.square;
 
-import yanevskyy.calculator.Calculator;
 
 /**
+ *
  * Created by MM on 18.05.2016.
  */
 public class Square {

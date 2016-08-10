@@ -1,34 +1,47 @@
 package yanevskyy.figure;
 
 /**
- * Created by MM on 17.05.2016.
+ * Uses to work with points in the coordinate system.
+ * @author Yanevskyy Igor igor2000@inbox.ru.
  */
 public class Point {
+    /*First point*/
     final double x;
+    /*Second point*/
     final double y;
 
+    /**
+     /**
+     * Default constructor.
+     * @param x First point.
+     * @param y Second point.
+     */
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    /** Get the distance between two points.*/
-
-    public double distanceTo(Point point){
-        double distance;
-        distance = Math.sqrt(Math.pow(point.getX() - this.getX(), 2) +
-                             Math.pow(point.getY() - this.getY(), 2));
-        return distance;
-    }
-
     public double getX() {
         return x;
     }
-
-
     public double getY() {
         return y;
     }
+
+    /** Get the distance between two points.*/
+    /**
+     * Gets the distance between two points.
+     * @param point Point for which need find distance.
+     * @return Distance.
+     */
+    public double distanceTo(Point point){
+        double distance;
+        distance = Math.sqrt(Math.pow(point.getX() - this.getX(), 2) +
+                Math.pow(point.getY() - this.getY(), 2));
+        return distance;
+    }
+
+
 
     @Override
     public int hashCode() {

@@ -8,8 +8,11 @@ public class Task_1_5 {
     public Task_1_5() {
     }
 
-    /**Sorts an array of bubble*/
-
+    /**
+     * Sorts an array of bubble
+     * @param values array with number.
+     * @return
+     */
     public int[] sortValues(int[] values){
         int count;
         boolean point;
@@ -29,8 +32,11 @@ public class Task_1_5 {
         return values;
     }
 
-    /** Rotates var array by 90 degrees*/
-
+    /**
+     * Rotates var array by 90 degrees
+     * @param values Array with symbol.
+     * @return
+     */
     public int[][] rotateValues(int[][] values){
         int[][]result = new int[values.length][values.length];
         int count;
@@ -44,8 +50,11 @@ public class Task_1_5 {
         return result;
     }
 
-    /** Remove duplicate in the array*/
-
+    /**
+     * Remove duplicate in the array
+     * @param strings Array with worlds.
+     * @return
+     */
     public String[] removeDuplicate(String[] strings){
         String line;
         String[] array;

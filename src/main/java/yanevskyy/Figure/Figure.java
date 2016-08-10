@@ -1,14 +1,25 @@
 package yanevskyy.figure;
 
 /**
- * Created by MM on 17.05.2016.
+ * Uses for find the maximum distance between figure's points.
+ * @author Yanevskyy Igor igor2000@inbox.ru.
  */
-public class Figure {
+public class Figure implements DistancePoint {
+    /*First point of figure*/
     public Point a;
+    /*Second point of figure*/
     public Point b;
+    /*Third point of figure*/
     public Point c;
+    /*All points of figure*/
     Point[] points;
 
+    /**
+     * Default constructor.
+     * @param a First point of figure.
+     * @param b Second point of figure.
+     * @param c Third point of figure.
+     */
     public Figure(Point a, Point b, Point c) {
         this.a = a;
         this.b = b;
@@ -16,8 +27,12 @@ public class Figure {
         points = new Point[]{a, b, c};
     }
 
-    /**Find the maximum distance between figure's points */
-
+    /**
+     * Find the maximum distance between figure's points
+     * @param points Figure's points
+     * @return Maximum distance.
+     */
+    @Override
     public double maxDistance(Point[] points){
         double max = 0;
         double distance;
