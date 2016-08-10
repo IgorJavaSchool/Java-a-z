@@ -39,37 +39,40 @@ public class InterCalculator extends Calculator implements SuperCalculate {
     public void selectActions(){
         String action;
         while (isActive()) {
-            setFirstNumber(0);
-            setSecondNumber(0);
             getConsoleHelper().print();
             action = scanner.next();
-            command(action);
-
+            switch (action){
+                case "1" :
+                case "2" :
+                case "3" :
+                case "4" : fillNumbers();
+                    break;
+                default: break;
+            }
+                command(action);
+            consoleHelper.printResult(getResult());
         }
     }
     public void command(String action){
         switch (action){
-            case "1" : fillNumbers();
-                add(firstNumber,secondNumber);
+            case "1" : add(firstNumber,secondNumber);
                 break;
-            case "2" : fillNumbers();
-                subtract(firstNumber,secondNumber);
+            case "2" : subtract(firstNumber,secondNumber);
                 break;
-            case "3" : fillNumbers();
-                multiply(firstNumber,secondNumber);
+            case "3" : multiply(firstNumber,secondNumber);
                 break;
-            case "4" : fillNumbers();
-                div(firstNumber, secondNumber);
+            case "4" : div(firstNumber, secondNumber);
                 break;
             case "5" : saveResult();
                 break;
-            case "6" : command(repetitionAction());
+            case "6" : setFirstNumber(getResult());
+                command(repetitionAction());
                 break;
             case "0" : setActive(false);
+                break;
             default:
         }
         setActionMemory(action);
-        consoleHelper.printResult(getResult());
     }
 
 public void fillNumbers(){
