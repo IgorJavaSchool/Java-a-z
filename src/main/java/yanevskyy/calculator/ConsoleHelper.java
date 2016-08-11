@@ -11,13 +11,17 @@ public class ConsoleHelper {
      */
     public void print(){
         writer("Веберите одну из операций");
-        writer("1 - Складывать числа");
-        writer("2 - Отнимать числа ");
-        writer("3 - Умножать числа");
-        writer("4 - Делить числа");
-        writer("5 - Запомнить результат");
-        writer("6 - Повторить операцию");
-        writer("0 - Закончить");
+        writer(String.format("%-5s%-5s", "+", " - Складывать числа"));
+        writer(String.format("%-5s%-5s", "-", " - Отнимать числа"));
+        writer(String.format("%-5s%-5s", "*", " - Умножать числа"));
+        writer(String.format("%-5s%-5s", "/", " - Делить числа"));
+        writer(String.format("%-5s%-5s", "sin", " - синус числа"));
+        writer(String.format("%-5s%-5s", "cos", " - косинус числа"));
+        writer(String.format("%-5s%-5s", "tg", " - тангенс числа"));
+        writer(String.format("%-5s%-5s", "arctg", " - арктангенс числа"));
+        writer(String.format("%-5s%-5s", "M", " - Запомнить результат"));
+        writer(String.format("%-5s%-5s", "R", " - Повторить операцию"));
+        writer(String.format("%-5s%-5s", "0", " - Закончить"));
     }
 
     /**
@@ -32,6 +36,13 @@ public class ConsoleHelper {
      */
     public void printSecondNumber(){
         writer("Введите второе число или используйте число из памяти(\"m\")");
+    }
+
+    /**
+     * Prints message for sin, cos, tg, arctg.
+     */
+    public void printOneNumber(){
+        writer("Введите число для расчёта или используйте число из памяти(\"m\")");
     }
 
     /**

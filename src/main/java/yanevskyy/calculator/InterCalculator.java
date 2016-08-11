@@ -41,15 +41,20 @@ public class InterCalculator extends Calculator implements SuperCalculate {
             getConsoleHelper().print();
             action = scanner.next();
             switch (action){
-                case "1" :
-                case "2" :
-                case "3" :
-                case "4" : fillNumbers();
+                case "+" :
+                case "-" :
+                case "*" :
+                case "/" : fillNumbers();
                     break;
+                case "sin"   :
+                case "cos"   :
+                case "tg"   :
+                case "arctg" : fillOneNumber();
                 default: break;
             }
             runCommand(action);
             getConsoleHelper().printResult(getResult());
+            getConsoleHelper().writer("");
         }
     }
 
@@ -60,17 +65,25 @@ public class InterCalculator extends Calculator implements SuperCalculate {
     @Override
     public void runCommand(String action){
         switch (action){
-            case "1" : add(getFirstNumber(),getSecondNumber());
+            case "+" : add(getFirstNumber(),getSecondNumber());
                 break;
-            case "2" : subtract(getFirstNumber(),getSecondNumber());
+            case "-" : subtract(getFirstNumber(),getSecondNumber());
                 break;
-            case "3" : multiply(getFirstNumber(),getSecondNumber());
+            case "*" : multiply(getFirstNumber(),getSecondNumber());
                 break;
-            case "4" : div(getFirstNumber(),getSecondNumber());
+            case "/" : div(getFirstNumber(),getSecondNumber());
                 break;
-            case "5" : setMemory(getResult());
+            case "sin" : sinFind(getFirstNumber());
                 break;
-            case "6" : setFirstNumber(getResult());
+            case "cos" : cosFind(getFirstNumber());
+                break;
+            case "tg" : tgFind(getFirstNumber());
+                break;
+            case "arctg" : artgFind(getFirstNumber());
+                break;
+            case "M" : setMemory(getResult());
+                break;
+            case "R" : setFirstNumber(getResult());
                 runCommand(getActionMemory());
                 break;
             case "0" : setActive(false);
@@ -79,6 +92,7 @@ public class InterCalculator extends Calculator implements SuperCalculate {
         }
         setActionMemory(action);
     }
+
 
     /**
      * Fill the first number and second.
@@ -98,6 +112,21 @@ public class InterCalculator extends Calculator implements SuperCalculate {
             setSecondNumber(Double.parseDouble(getScan));
         } else{
             setSecondNumber(getMemory());
+        }
+    }
+
+    /**
+     * Set decimal for sin, cos, tg, arctg.
+     * @return
+     */
+    public void fillOneNumber(){
+        String getScan;
+        getConsoleHelper().printOneNumber();
+        getScan = scanner.next();
+        if (!getScan.equals("m")){
+            setFirstNumber(Double.parseDouble(getScan));
+        } else{
+            setFirstNumber(getMemory());
         }
     }
 

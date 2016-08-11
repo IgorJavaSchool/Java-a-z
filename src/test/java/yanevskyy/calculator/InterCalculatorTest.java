@@ -21,7 +21,7 @@ public class InterCalculatorTest {
         /**
          * Testing action add
          */
-        interCalculator.runCommand("1");
+        interCalculator.runCommand("+");
         result = interCalculator.getResult();
 
         Assert.assertThat(result, is(checked));
@@ -31,7 +31,7 @@ public class InterCalculatorTest {
          */
         checked = 8;
 
-        interCalculator.runCommand("6");
+        interCalculator.runCommand("R");
         result = interCalculator.getResult();
 
         Assert.assertThat(result, is(checked));
@@ -41,8 +41,20 @@ public class InterCalculatorTest {
          */
         checked = 8;
 
-        interCalculator.runCommand("5");
+        interCalculator.runCommand("M");
         result = interCalculator.getMemory();
+
+        Assert.assertThat(result, is(checked));
+
+        /**
+         * Testing action tg.
+         */
+
+        checked = 0.320040389379563;
+        interCalculator.setFirstNumber(60);
+
+        interCalculator.runCommand("tg");
+        result = interCalculator.getResult();
 
         Assert.assertThat(result, is(checked));
 
