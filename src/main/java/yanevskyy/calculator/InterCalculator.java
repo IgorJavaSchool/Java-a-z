@@ -7,13 +7,19 @@ import java.util.Scanner;
  * @author Yanevskyy Igor igor2000@inbox.ru.
  */
 public class InterCalculator extends Calculator implements SuperCalculate {
+    /*First number for actions*/
     private double firstNumber;
+    /*Second number for actions*/
     private double secondNumber;
     /*Stores result*/
     private double memory;
+    /*The last command*/
     private String actionMemory;
+    /*Read message from console*/
     private Scanner scanner;
+    /*The parameter has different lists menu*/
     private ConsoleHelper consoleHelper;
+    /*Active program*/
     private boolean active;
 
     /**
@@ -25,17 +31,10 @@ public class InterCalculator extends Calculator implements SuperCalculate {
         this.active = true;
     }
 
-
-
+    /**
+     * Read from console user's message and fill first and second numbers.
+     */
     @Override
-    public void saveResult() {
-        setMemory(getResult());
-    }
-
-    @Override
-    public String repetitionAction() {
-        return  getActionMemory();
-    }
     public void selectActions(){
         String action;
         while (isActive()) {
@@ -49,24 +48,30 @@ public class InterCalculator extends Calculator implements SuperCalculate {
                     break;
                 default: break;
             }
-                command(action);
-            consoleHelper.printResult(getResult());
+            runCommand(action);
+            getConsoleHelper().printResult(getResult());
         }
     }
-    public void command(String action){
+
+    /**
+     * Select and run the calculator's command.
+     * @param action The user's command.
+     */
+    @Override
+    public void runCommand(String action){
         switch (action){
-            case "1" : add(firstNumber,secondNumber);
+            case "1" : add(getFirstNumber(),getSecondNumber());
                 break;
-            case "2" : subtract(firstNumber,secondNumber);
+            case "2" : subtract(getFirstNumber(),getSecondNumber());
                 break;
-            case "3" : multiply(firstNumber,secondNumber);
+            case "3" : multiply(getFirstNumber(),getSecondNumber());
                 break;
-            case "4" : div(firstNumber, secondNumber);
+            case "4" : div(getFirstNumber(),getSecondNumber());
                 break;
-            case "5" : saveResult();
+            case "5" : setMemory(getResult());
                 break;
             case "6" : setFirstNumber(getResult());
-                command(repetitionAction());
+                runCommand(getActionMemory());
                 break;
             case "0" : setActive(false);
                 break;
@@ -75,23 +80,26 @@ public class InterCalculator extends Calculator implements SuperCalculate {
         setActionMemory(action);
     }
 
-public void fillNumbers(){
-    String getScan;
-    getConsoleHelper().printFirstNumber();
-    getScan = scanner.next();
-    if (!getScan.equals("m")){
-        setFirstNumber(Double.parseDouble(getScan));
-    } else{
-        setFirstNumber(memory);
+    /**
+     * Fill the first number and second.
+     */
+    public void fillNumbers(){
+        String getScan;
+        getConsoleHelper().printFirstNumber();
+        getScan = scanner.next();
+        if (!getScan.equals("m")){
+            setFirstNumber(Double.parseDouble(getScan));
+        } else{
+            setFirstNumber(getMemory());
+        }
+        getConsoleHelper().printSecondNumber();
+        getScan = scanner.next();
+        if (!getScan.equals("m")){
+            setSecondNumber(Double.parseDouble(getScan));
+        } else{
+            setSecondNumber(getMemory());
+        }
     }
-    getConsoleHelper().printSecondNumber();
-    getScan = scanner.next();
-    if (!getScan.equals("m")){
-        setSecondNumber(Double.parseDouble(getScan));
-    } else{
-        setSecondNumber(memory);
-    }
-}
 
     public double getFirstNumber() {
         return firstNumber;

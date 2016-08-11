@@ -1,31 +1,50 @@
 package yanevskyy.calculator;
 
-import org.junit.Rule;
+import org.junit.Assert;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
+import static org.hamcrest.core.Is.is;
 
 /**
  * @author Yanevskyy Igor igor2000@inbox.ru.
  */
 public class InterCalculatorTest {
-    @Rule
-    public final TextFromStandardInputStream systemInMock
-            = emptyStandardInputStream();
+
 
     @Test
     public void selectActions() throws Exception {
         InterCalculator interCalculator = new InterCalculator();
-        String[] text = new String[]{"1", "2", "3",};
+        interCalculator.setFirstNumber(2);
+        interCalculator.setSecondNumber(3);
+        double result;
+        double checked = 5;
+        /**
+         * Testing action add
+         */
+        interCalculator.runCommand("1");
+        result = interCalculator.getResult();
 
-        systemInMock.provideLines(text);
+        Assert.assertThat(result, is(checked));
 
-        interCalculator.main(text);
-        double result = interCalculator.getResult();
+        /**
+         * Testing the repetition action.
+         */
+        checked = 8;
 
-        assertEquals(5, result);
+        interCalculator.runCommand("6");
+        result = interCalculator.getResult();
+
+        Assert.assertThat(result, is(checked));
+
+        /**
+         * Testing action save result.
+         */
+        checked = 8;
+
+        interCalculator.runCommand("5");
+        result = interCalculator.getMemory();
+
+        Assert.assertThat(result, is(checked));
 
     }
 
