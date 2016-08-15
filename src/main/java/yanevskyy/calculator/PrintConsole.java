@@ -4,7 +4,7 @@ package yanevskyy.calculator;
  * Uses for help user select the action and print in console the message.
  * @author Yanevskyy Igor igor2000@inbox.ru.
  */
-public class ConsoleHelper {
+public class PrintConsole {
 
     /**
      * Print in console main menu.

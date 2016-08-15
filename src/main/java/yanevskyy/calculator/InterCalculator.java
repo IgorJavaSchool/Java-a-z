@@ -18,7 +18,7 @@ public class InterCalculator extends Calculator implements SuperCalculate {
     /*Read message from console*/
     private Scanner scanner;
     /*The parameter has different lists menu*/
-    private ConsoleHelper consoleHelper;
+    private PrintConsole printConsole;
     /*Active program*/
     private boolean active;
 
@@ -27,7 +27,7 @@ public class InterCalculator extends Calculator implements SuperCalculate {
      */
     public InterCalculator() {
         this.scanner = new Scanner(System.in);
-        this.consoleHelper = new ConsoleHelper();
+        this.printConsole = new PrintConsole();
         this.active = true;
     }
 
@@ -38,7 +38,7 @@ public class InterCalculator extends Calculator implements SuperCalculate {
     public void selectActions(){
         String action;
         while (isActive()) {
-            getConsoleHelper().print();
+            printConsole.print();
             action = scanner.next();
             switch (action){
                 case "+" :
@@ -53,8 +53,8 @@ public class InterCalculator extends Calculator implements SuperCalculate {
                 default: break;
             }
             runCommand(action);
-            getConsoleHelper().printResult(getResult());
-            getConsoleHelper().writer("");
+            printConsole.printResult(getResult());
+            printConsole.writer("");
         }
     }
 
@@ -98,18 +98,18 @@ public class InterCalculator extends Calculator implements SuperCalculate {
      * Fill the first number and second.
      */
     public void fillNumbers(){
-        String getScan;
-        getConsoleHelper().printFirstNumber();
-        getScan = scanner.next();
-        if (!getScan.equals("m")){
-            setFirstNumber(Double.parseDouble(getScan));
+        String stringFromConsole;
+        printConsole.printFirstNumber();
+        stringFromConsole = scanner.next();
+        if (!stringFromConsole.equals("m")){
+            setFirstNumber(Double.parseDouble(stringFromConsole));
         } else{
             setFirstNumber(getMemory());
         }
-        getConsoleHelper().printSecondNumber();
-        getScan = scanner.next();
-        if (!getScan.equals("m")){
-            setSecondNumber(Double.parseDouble(getScan));
+        printConsole.printSecondNumber();
+        stringFromConsole = scanner.next();
+        if (!stringFromConsole.equals("m")){
+            setSecondNumber(Double.parseDouble(stringFromConsole));
         } else{
             setSecondNumber(getMemory());
         }
@@ -121,7 +121,7 @@ public class InterCalculator extends Calculator implements SuperCalculate {
      */
     public void fillOneNumber(){
         String getScan;
-        getConsoleHelper().printOneNumber();
+        printConsole.printOneNumber();
         getScan = scanner.next();
         if (!getScan.equals("m")){
             setFirstNumber(Double.parseDouble(getScan));
@@ -152,10 +152,6 @@ public class InterCalculator extends Calculator implements SuperCalculate {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public ConsoleHelper getConsoleHelper() {
-        return consoleHelper;
     }
 
     public double getMemory() {

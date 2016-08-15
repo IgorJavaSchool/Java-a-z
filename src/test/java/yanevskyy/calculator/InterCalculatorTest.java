@@ -11,6 +11,8 @@ import static org.hamcrest.core.Is.is;
  */
 public class InterCalculatorTest {
     InterCalculator interCalculator = new InterCalculator();
+    double result;
+    double checked;
 
     @Before
     public void setUp() throws Exception {
@@ -19,9 +21,8 @@ public class InterCalculatorTest {
     }
 
     @Test
-    public void selectActions() throws Exception {
-        double result;
-        double checked = 5;
+    public void takeTwoDecimalsAddThem() throws Exception {
+        checked = 5;
         /**
          * Testing action add
          */
@@ -30,6 +31,10 @@ public class InterCalculatorTest {
 
         Assert.assertThat(result, is(checked));
 
+    }
+
+    @Test
+    public void takeCommandRepetitionAction() throws Exception {
         /**
          * Testing the repetition action.
          */
@@ -39,7 +44,10 @@ public class InterCalculatorTest {
         result = interCalculator.getResult();
 
         Assert.assertThat(result, is(checked));
+    }
 
+    @Test
+    public void takeCommandMemoryResultAction() throws Exception {
         /**
          * Testing action save result.
          */
@@ -49,7 +57,10 @@ public class InterCalculatorTest {
         result = interCalculator.getMemory();
 
         Assert.assertThat(result, is(checked));
+    }
 
+    @Test
+    public void takeOneDecimalFindTg() throws Exception {
         /**
          * Testing action tg.
          */
@@ -61,7 +72,6 @@ public class InterCalculatorTest {
         result = interCalculator.getResult();
 
         Assert.assertThat(result, is(checked));
-
     }
 
 }
