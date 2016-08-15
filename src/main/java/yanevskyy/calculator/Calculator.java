@@ -56,31 +56,7 @@ public class Calculator {
         return result;
     }
 
-    /**
-     * Find sinus.
-     */
-    public void sinFind(double first){
-        result = Math.sin(first);
-    }
-
-    /**
-     * Find cosine.
-     */
-    public void cosFind(double first){
-        result = Math.cos(first);
-    }
-
-    /**
-     * Find tangent.
-     */
-    public void tgFind(double first){
-        result = Math.tan(first);
-    }
-
-    /**
-     * Find arctangent.
-     */
-    public void artgFind(double first){
-        result = Math.atan(first);
+    public void setResult(double result) {
+        this.result = result;
     }
 }

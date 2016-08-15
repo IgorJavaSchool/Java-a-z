@@ -178,4 +178,31 @@ public class InterCalculator extends Calculator implements SuperCalculate {
         InterCalculator interCalculator = new InterCalculator();
         interCalculator.selectActions();
     }
+    /**
+     * Find sinus.
+     */
+    public void sinFind(double first){
+        setResult(Math.sin(first));
+    }
+
+    /**
+     * Find cosine.
+     */
+    public void cosFind(double first){
+        setResult(Math.cos(first));
+    }
+
+    /**
+     * Find tangent.
+     */
+    public void tgFind(double first){
+        setResult(Math.tan(first));
+    }
+
+    /**
+     * Find arctangent.
+     */
+    public void artgFind(double first){
+        setResult(Math.atan(first));
+    }
 }

@@ -1,6 +1,7 @@
 package yanevskyy.calculator;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -9,13 +10,16 @@ import static org.hamcrest.core.Is.is;
  * @author Yanevskyy Igor igor2000@inbox.ru.
  */
 public class InterCalculatorTest {
+    InterCalculator interCalculator = new InterCalculator();
 
+    @Before
+    public void setUp() throws Exception {
+        interCalculator.setFirstNumber(2);
+        interCalculator.setSecondNumber(3);
+    }
 
     @Test
     public void selectActions() throws Exception {
-        InterCalculator interCalculator = new InterCalculator();
-        interCalculator.setFirstNumber(2);
-        interCalculator.setSecondNumber(3);
         double result;
         double checked = 5;
         /**
