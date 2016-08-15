@@ -40,6 +40,7 @@ public class InterCalculatorTest {
          */
         checked = 8;
 
+        interCalculator.runCommand("+");
         interCalculator.runCommand("R");
         result = interCalculator.getResult();
 
@@ -51,8 +52,9 @@ public class InterCalculatorTest {
         /**
          * Testing action save result.
          */
-        checked = 8;
+        checked = 5;
 
+        interCalculator.runCommand("+");
         interCalculator.runCommand("M");
         result = interCalculator.getMemory();
 
