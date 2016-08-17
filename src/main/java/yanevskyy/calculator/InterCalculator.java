@@ -6,7 +6,11 @@ import java.util.Scanner;
  * Uses for work with console and has new functions.
  * @author Yanevskyy Igor igor2000@inbox.ru.
  */
-public class InterCalculator extends Calculator implements SuperCalculate {
+public class InterCalculator  implements SuperCalculate {
+    /*Calculator*/
+    private Calculator calculator;
+    /*Engineering calculator*/
+    private EngineeringCalculator engineeringCalculator;
     /*First number for actions*/
     private double firstNumber;
     /*Second number for actions*/
@@ -25,10 +29,12 @@ public class InterCalculator extends Calculator implements SuperCalculate {
     /**
      * Default constructor
      */
-    public InterCalculator() {
+    public InterCalculator(Calculator calculator, EngineeringCalculator engineeringCalculator) {
         this.scanner = new Scanner(System.in);
         this.printConsole = new PrintConsole();
         this.active = true;
+        this.calculator = calculator;
+        this.engineeringCalculator = engineeringCalculator;
     }
 
     /**
@@ -46,14 +52,14 @@ public class InterCalculator extends Calculator implements SuperCalculate {
                 case "*" :
                 case "/" : fillNumbers();
                     break;
-                case "sin"   :
-                case "cos"   :
-                case "tg"   :
+                case "sin" :
+                case "cos" :
+                case "tg"  :
                 case "arctg" : fillOneNumber();
                 default: break;
             }
             runCommand(action);
-            printConsole.printResult(getResult());
+            printConsole.printResult(this.calculator.getResult());
             printConsole.writer("");
         }
     }
@@ -65,32 +71,32 @@ public class InterCalculator extends Calculator implements SuperCalculate {
     @Override
     public void runCommand(String action){
         switch (action){
-            case "+" : add(getFirstNumber(),getSecondNumber());
+            case "+" : this.calculator.add(this.firstNumber,this.secondNumber);
                 break;
-            case "-" : subtract(getFirstNumber(),getSecondNumber());
+            case "-" : this.calculator.subtract(this.firstNumber,this.secondNumber);
                 break;
-            case "*" : multiply(getFirstNumber(),getSecondNumber());
+            case "*" : this.calculator.multiply(this.firstNumber,this.secondNumber);
                 break;
-            case "/" : div(getFirstNumber(),getSecondNumber());
+            case "/" : this.calculator.div(this.firstNumber,this.secondNumber);
                 break;
-            case "sin" : sinFind(getFirstNumber());
+            case "sin" : this.engineeringCalculator.sinFind(this.firstNumber);
                 break;
-            case "cos" : cosFind(getFirstNumber());
+            case "cos" : this.engineeringCalculator.cosFind(this.firstNumber);
                 break;
-            case "tg" : tgFind(getFirstNumber());
+            case "tg" : this.engineeringCalculator.tgFind(this.firstNumber);
                 break;
-            case "arctg" : artgFind(getFirstNumber());
+            case "arctg" : this.engineeringCalculator.artgFind(this.firstNumber);
                 break;
-            case "M" : setMemory(getResult());
+            case "M" : this.memory = this.calculator.getResult();
                 break;
-            case "R" : setFirstNumber(getResult());
-                runCommand(getActionMemory());
+            case "R" : this.firstNumber =  this.calculator.getResult();
+                runCommand(this.actionMemory);
                 break;
             case "0" : setActive(false);
                 break;
             default:
         }
-        setActionMemory(action);
+        this.actionMemory = action;
     }
 
 
@@ -102,16 +108,16 @@ public class InterCalculator extends Calculator implements SuperCalculate {
         printConsole.printFirstNumber();
         stringFromConsole = scanner.next();
         if (!stringFromConsole.equals("m")){
-            setFirstNumber(Double.parseDouble(stringFromConsole));
+            this.firstNumber = Double.parseDouble(stringFromConsole);
         } else{
-            setFirstNumber(getMemory());
+            this.firstNumber =  this.memory;
         }
         printConsole.printSecondNumber();
         stringFromConsole = scanner.next();
         if (!stringFromConsole.equals("m")){
-            setSecondNumber(Double.parseDouble(stringFromConsole));
+            this.secondNumber = Double.parseDouble(stringFromConsole);
         } else{
-            setSecondNumber(getMemory());
+            this.secondNumber = this.memory;
         }
     }
 
@@ -124,26 +130,10 @@ public class InterCalculator extends Calculator implements SuperCalculate {
         printConsole.printOneNumber();
         getScan = scanner.next();
         if (!getScan.equals("m")){
-            setFirstNumber(Double.parseDouble(getScan));
+            this.firstNumber =  Double.parseDouble(getScan);
         } else{
-            setFirstNumber(getMemory());
+            this.firstNumber =  this.memory;
         }
-    }
-
-    public double getFirstNumber() {
-        return firstNumber;
-    }
-
-    public void setFirstNumber(double firstNumber) {
-        this.firstNumber = firstNumber;
-    }
-
-    public double getSecondNumber() {
-        return secondNumber;
-    }
-
-    public void setSecondNumber(double secondNumber) {
-        this.secondNumber = secondNumber;
     }
 
     public boolean isActive() {
@@ -154,51 +144,10 @@ public class InterCalculator extends Calculator implements SuperCalculate {
         this.active = active;
     }
 
-    public double getMemory() {
-        return memory;
-    }
-
-    public void setMemory(double memory) {
-        this.memory = memory;
-    }
-
-    public String getActionMemory() {
-        return actionMemory;
-    }
-
-    public void setActionMemory(String actionMemory) {
-        this.actionMemory = actionMemory;
-    }
-
     public static void main(String[] args) {
-        InterCalculator interCalculator = new InterCalculator();
+        Calculator calculator = new Calculator();
+        EngineeringCalculator engineeringCalculator = new EngineeringCalculator();
+        InterCalculator interCalculator = new InterCalculator(calculator,engineeringCalculator);
         interCalculator.selectActions();
-    }
-    /**
-     * Find sinus.
-     */
-    public void sinFind(double first){
-        setResult(Math.sin(first));
-    }
-
-    /**
-     * Find cosine.
-     */
-    public void cosFind(double first){
-        setResult(Math.cos(first));
-    }
-
-    /**
-     * Find tangent.
-     */
-    public void tgFind(double first){
-        setResult(Math.tan(first));
-    }
-
-    /**
-     * Find arctangent.
-     */
-    public void artgFind(double first){
-        setResult(Math.atan(first));
     }
 }
