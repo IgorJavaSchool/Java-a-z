@@ -1,7 +1,7 @@
 package yanevskyy.calculator;
 
 /**
- * Uses for help user select the action and print in console the message.
+ * Uses for help user select the action and printMenu in console the message.
  * @author Yanevskyy Igor igor2000@inbox.ru.
  */
 public class PrintConsole {
@@ -9,7 +9,7 @@ public class PrintConsole {
     /**
      * Print in console main menu.
      */
-    public void print(){
+    public void printMenu(){
         writer("Веберите одну из операций");
         writer(String.format("%-5s%-5s", "+", " - Складывать числа"));
         writer(String.format("%-5s%-5s", "-", " - Отнимать числа"));
@@ -19,30 +19,6 @@ public class PrintConsole {
         writer(String.format("%-5s%-5s", "cos", " - косинус числа"));
         writer(String.format("%-5s%-5s", "tg", " - тангенс числа"));
         writer(String.format("%-5s%-5s", "arctg", " - арктангенс числа"));
-        writer(String.format("%-5s%-5s", "M", " - Запомнить результат"));
-        writer(String.format("%-5s%-5s", "R", " - Повторить операцию"));
-        writer(String.format("%-5s%-5s", "0", " - Закончить"));
-    }
-
-    /**
-     * Prints message for set first digital or digital from memory.
-     */
-    public void printFirstNumber(){
-        writer("Введите первое число или используйте число из памяти(\"m\")");
-    }
-
-    /**
-     * Prints message for set second digital or digital from memory.
-     */
-    public void printSecondNumber(){
-        writer("Введите второе число или используйте число из памяти(\"m\")");
-    }
-
-    /**
-     * Prints message for sin, cos, tg, arctg.
-     */
-    public void printOneNumber(){
-        writer("Введите число для расчёта или используйте число из памяти(\"m\")");
     }
 
     /**
@@ -53,11 +29,4 @@ public class PrintConsole {
         System.out.println(message);
     }
 
-    /**
-     * Print the action's result.
-     * @param result Action's result.
-     */
-    public void printResult(double result){
-        writer("Result = " + result);
-    }
 }
