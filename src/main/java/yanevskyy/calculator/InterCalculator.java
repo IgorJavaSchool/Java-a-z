@@ -1,6 +1,6 @@
 package yanevskyy.calculator;
 
-import yanevskyy.calculator.Actions.*;
+import yanevskyy.calculator.actions.*;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,21 +5,22 @@ import java.util.Scanner;
 /**
  * @author Yanevskyy Igor igor2000@inbox.ru.
  */
-public class Cos implements ActionStrategy {
+public class Multiply implements ActionStrategy {
     String key;
 
-    public Cos() {
-        this.key = "cos";
+    public Multiply() {
+        this.key = "*";
     }
 
     /**
-     * Find cosine.
+     * Takes two numbers and the first numbers multiplied by to second.
      * @param scanner Input stream.
      */
     @Override
     public double runAction(Scanner scanner) {
         double firstNumber = scanner.nextDouble();
-        return Math.cos(firstNumber);
+        double secondNumber = scanner.nextDouble();
+        return firstNumber * secondNumber;
     }
 
     @Override

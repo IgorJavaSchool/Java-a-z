@@ -1,4 +1,4 @@
-package yanevskyy.calculator.Actions;
+package yanevskyy.calculator.actions;
 
 import java.util.Scanner;
 
